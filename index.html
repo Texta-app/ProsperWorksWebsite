@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Prosper Works — Simple, honest tools for small business</title>
+<meta name="description" content="The Prosper Works builds simple, single-purpose software for small businesses — starting with Texta, plus custom web, e-commerce, and app development.">
+<meta name="theme-color" content="#1b1a17">
+<link rel="icon" type="image/png" href="./mark-primary-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1b1a17; --ink-soft:#33312a;
+    --brass:#9c7c4d;
+    --paper:#f7f5f0; --paper-alt:#faf8f3;
+    --stone:#615e57; --stone-light:#807d74; --stone-pale:#a8a59c;
+    --border:#e9e5dc; --border-soft:#ece8df;
+    --white:#ffffff;
+    --teal:#1d9e75; --teal-dark:#0f6e56; --teal-pale:#e1f5ee;
+    --orange:#c2772b; --orange-dark:#8a5210; --orange-pale:#faeeda;
+    --r:6px;
+    --font-display:'Zilla Slab',serif; --font-body:'Hanken Grotesk',sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-body);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  ul{list-style:none}
+  button{font-family:inherit;cursor:pointer}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--brass); outline-offset:3px; border-radius:3px}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 32px}
+
+  /* ---------- header ---------- */
+  header{position:sticky; top:0; z-index:50; background:rgba(247,245,240,0.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--border)}
+  .header-inner{display:flex; align-items:center; justify-content:space-between; padding:18px 0; gap:24px}
+  .header-logo img{height:34px; width:auto}
+  nav.main-nav{display:flex; align-items:center; gap:28px; font-size:14px; font-weight:600; color:var(--stone)}
+  nav.main-nav a{padding:4px 0; border-bottom:1px solid transparent; transition:color .15s, border-color .15s}
+  nav.main-nav a:hover{color:var(--ink); border-color:var(--brass)}
+
+  /* ---------- hero ---------- */
+  .hero{padding:100px 0 84px; position:relative; overflow:hidden}
+  .hero-hex{position:absolute; right:-90px; top:-60px; width:420px; height:420px; opacity:.05; pointer-events:none}
+  .hero-inner{max-width:740px; animation:fadeUp .7s ease both}
+  .eyebrow{font-size:12px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--brass)}
+  h1.hero-title{font-family:var(--font-display); font-weight:700; font-size:clamp(38px,5.4vw,58px); line-height:1.08; color:var(--ink); margin-top:16px; letter-spacing:-.01em}
+  .hero-sub{font-size:18px; line-height:1.65; color:var(--stone); margin-top:22px; max-width:600px}
+  .hero-founder{font-size:14.5px; line-height:1.6; color:var(--stone-light); margin-top:20px; max-width:560px; padding-top:20px; border-top:1px solid var(--border)}
+  .hero-cta-row{display:flex; gap:12px; margin-top:32px; flex-wrap:wrap}
+
+  /* ---------- buttons ---------- */
+  .btn{display:inline-flex; align-items:center; gap:8px; font-size:14.5px; font-weight:600; padding:13px 22px; border-radius:var(--r); border:1px solid transparent; transition:transform .15s, opacity .15s, border-color .15s}
+  .btn-ink{background:var(--ink); color:var(--paper)}
+  .btn-ink:hover{transform:translateY(-1px); opacity:.92}
+  .btn-ghost{background:transparent; color:var(--ink); border-color:var(--border)}
+  .btn-ghost:hover{border-color:var(--brass); transform:translateY(-1px)}
+  .btn-teal{background:var(--teal); color:#fff}
+  .btn-teal:hover{transform:translateY(-1px); opacity:.92}
+  .btn-disabled{background:var(--border-soft); color:var(--stone-pale); cursor:default}
+  .btn .arr{transition:transform .15s}
+  .btn:hover .arr{transform:translateX(3px)}
+
+  /* ---------- section shell ---------- */
+  section{padding:78px 0}
+  .section-tight{padding:0 0 78px}
+  .kicker{font-size:12px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--brass)}
+  h2.section-title{font-family:var(--font-display); font-weight:700; font-size:32px; color:var(--ink); margin-top:14px; letter-spacing:-.01em}
+  .section-sub{font-size:15.5px; line-height:1.65; color:var(--stone); max-width:620px; margin-top:12px}
+  .divider{height:1px; background:var(--border)}
+
+  /* ---------- philosophy ---------- */
+  .philosophy-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:40px}
+  .philosophy-card h3{font-family:var(--font-display); font-weight:600; font-size:19px; color:var(--ink)}
+  .philosophy-card p{font-size:14.5px; line-height:1.6; color:var(--stone); margin-top:10px}
+
+  /* ---------- house of brands ---------- */
+  .hob-box{background:#fff; border:1px solid var(--border); border-radius:var(--r); padding:48px 32px 44px; margin-top:36px}
+  .hob-parent{display:flex; flex-direction:column; align-items:center}
+  .hob-parent-inner{display:flex; align-items:center; gap:14px}
+  .hob-parent img{height:26px; width:auto}
+  .hob-line-v{width:1px; height:28px; background:var(--border); margin:8px auto 0}
+  .hob-line-h{width:46%; height:1px; background:var(--border); margin:0 auto}
+  .hob-line-branch{display:flex; justify-content:space-around; width:46%; margin:0 auto}
+  .hob-line-branch span{width:1px; height:24px; background:var(--border)}
+  .hob-children{display:grid; grid-template-columns:repeat(2,1fr); gap:20px; max-width:640px; margin:4px auto 0}
+  .hob-child{border:1px solid var(--border-soft); border-radius:var(--r); padding:24px; text-align:center; transition:border-color .15s, transform .15s}
+  .hob-child:hover{transform:translateY(-2px)}
+  .hob-child.texta:hover{border-color:var(--teal)}
+  .hob-child.invoice:hover{border-color:var(--orange)}
+  .hob-child .name{font-family:var(--font-body); font-weight:800; font-size:21px; letter-spacing:-.01em}
+  .hob-child.texta .name{color:var(--teal-dark)}
+  .hob-child.invoice .name{color:var(--orange-dark)}
+  .hob-child .desc{font-size:12.5px; color:var(--stone-light); margin-top:6px}
+  .hob-note{font-size:12px; color:var(--stone-pale); text-align:center; margin-top:24px}
+
+  /* ---------- product sections ---------- */
+  .product{background:#fff; border:1px solid var(--border); border-radius:var(--r); padding:44px; margin-top:32px; display:grid; grid-template-columns:1.15fr 1fr; gap:40px; align-items:center}
+  .product-badge{display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:5px 11px; border-radius:100px}
+  .badge-live{background:var(--teal-pale); color:var(--teal-dark)}
+  .badge-soon{background:var(--orange-pale); color:var(--orange-dark)}
+  .product h3{font-family:var(--font-display); font-weight:700; font-size:27px; color:var(--ink); margin-top:14px; letter-spacing:-.01em}
+  .product p.desc{font-size:15px; line-height:1.65; color:var(--stone); margin-top:14px}
+  .product ul{margin-top:20px; display:flex; flex-direction:column; gap:9px}
+  .product li{font-size:14px; color:var(--ink-soft); display:flex; gap:10px; align-items:flex-start}
+  .product li::before{content:'—'; color:var(--stone-pale); flex:none}
+  .product-actions{margin-top:26px; display:flex; gap:12px; flex-wrap:wrap}
+  .product-visual{border-radius:var(--r); padding:36px; display:flex; align-items:center; justify-content:center; min-height:200px}
+  .product-visual.texta{background:var(--teal-pale)}
+  .product-visual.invoice{background:var(--orange-pale)}
+  .product-visual .mark{font-family:var(--font-display); font-weight:800; font-size:46px; letter-spacing:-.01em}
+  .product-visual.texta .mark{color:var(--teal-dark)}
+  .product-visual.invoice .mark{color:var(--orange-dark)}
+  .product-visual .tag{font-size:12px; color:var(--stone-light); margin-top:8px; text-align:center}
+
+  /* ---------- services ---------- */
+  .services-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:36px}
+  .service-card{background:#fff; border:1px solid var(--border); border-radius:var(--r); padding:28px}
+  .service-card .num{font-family:'Hanken Grotesk',sans-serif; font-weight:700; font-size:11px; letter-spacing:.1em; color:var(--brass)}
+  .service-card h3{font-family:var(--font-display); font-weight:600; font-size:18px; color:var(--ink); margin-top:12px}
+  .service-card p{font-size:13.5px; line-height:1.55; color:var(--stone); margin-top:8px}
+  .services-cta{margin-top:32px; background:var(--paper-alt); border:1px solid var(--border); border-radius:var(--r); padding:28px 32px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap}
+  .services-cta p{font-size:14.5px; color:var(--stone); max-width:480px}
+  .services-cta strong{color:var(--ink)}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink); padding:48px 0}
+  .footer-inner{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:18px}
+  .footer-left{display:flex; align-items:center; gap:14px}
+  .footer-left img{height:24px; width:auto}
+  .footer-left span{font-family:var(--font-display); font-weight:600; font-size:13px; letter-spacing:.04em; color:var(--paper-alt)}
+  .footer-nav{display:flex; gap:22px; font-size:13px; color:var(--stone-pale)}
+  .footer-nav a:hover{color:var(--paper)}
+  .footer-copy{font-size:12px; color:#6b675e; font-family:ui-monospace,Menlo,monospace}
+
+  @keyframes fadeUp{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)}}
+
+  @media (max-width: 880px){
+    .product{grid-template-columns:1fr; padding:32px}
+    .product-visual{order:-1; min-height:140px}
+    .philosophy-grid{grid-template-columns:1fr; gap:24px}
+    .services-grid{grid-template-columns:1fr}
+    .hob-children{grid-template-columns:1fr; max-width:360px}
+    .hob-line-h, .hob-line-branch{width:1px; height:24px}
+    .hob-line-branch{flex-direction:column; align-items:center; gap:6px}
+    .hob-line-branch span{width:1px; height:12px}
+  }
+  @media (max-width: 640px){
+    nav.main-nav{display:none}
+    h1.hero-title{font-size:34px}
+    .hero{padding:64px 0 56px}
+    section{padding:56px 0}
+    .footer-inner{flex-direction:column; align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <a href="#top" class="header-logo" aria-label="The Prosper Works home">
+      <img src="./logo-horizontal-1600.png" alt="The Prosper Works">
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="#texta">Texta</a>
+      <a href="#simple-invoice">Simple Invoice</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <svg class="hero-hex" viewBox="0 0 100 100" aria-hidden="true">
+      <polygon points="50,4 89,27 89,73 50,96 11,73 11,27" fill="none" stroke="#1b1a17" stroke-width="1.5"/>
+    </svg>
+    <div class="wrap">
+      <div class="hero-inner">
+        <div class="eyebrow">The Prosper Works</div>
+        <h1 class="hero-title">Simple, honest tools for small business.</h1>
+        <p class="hero-sub">We build single-purpose software for people running real businesses — not enterprise teams. Every tool does one job well, costs what it should, and never asks you to pay for features you'll never touch.</p>
+        <p class="hero-founder">Started by a small business owner who books shows for a band, runs an online boutique, and works in media — and got tired of $150-a-month platforms built for someone else's business. The Prosper Works is what we wished already existed.</p>
+        <div class="hero-cta-row">
+          <a href="#texta" class="btn btn-ink">See our tools <span class="arr">↓</span></a>
+          <a href="#services" class="btn btn-ghost">Need something custom? <span class="arr">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- ============ PHILOSOPHY ============ -->
+  <section>
+    <div class="wrap">
+      <div class="kicker">What we believe</div>
+      <h2 class="section-title">Software shouldn't make you pay for what you don't use.</h2>
+      <div class="philosophy-grid">
+        <div class="philosophy-card">
+          <h3>No bloat</h3>
+          <p>If a feature doesn't help you run your business, we leave it out. Less to learn, less to click through, less to pay for.</p>
+        </div>
+        <div class="philosophy-card">
+          <h3>Fair pricing</h3>
+          <p>Low overhead means low prices. We pass the savings on to you instead of stacking up "premium" tiers to upsell.</p>
+        </div>
+        <div class="philosophy-card">
+          <h3>Built by someone who needed it</h3>
+          <p>Every tool starts as a problem we ran into ourselves, in our own businesses — not a feature request from a roadmap meeting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOUSE OF BRANDS ============ -->
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="kicker">One company, a few tools</div>
+      <h2 class="section-title">Each tool stands on its own.</h2>
+      <p class="section-sub">The Prosper Works is the company behind these products. We keep it in the background — quiet, behind the scenes — so each tool can have its own name, its own color, and its own focus.</p>
+
+      <div class="hob-box">
+        <div class="hob-parent">
+          <div class="hob-parent-inner">
+            <img src="./mark-primary-512.png" alt="" style="height:34px;width:34px;" aria-hidden="true">
+            <span style="font-family:'Zilla Slab',serif; font-weight:700; font-size:18px; letter-spacing:.06em; color:#1b1a17;"><span style="font-weight:500; color:#6f6a60;">THE </span>PROSPER WORKS</span>
+          </div>
+        </div>
+        <div class="hob-line-v"></div>
+        <div class="hob-line-h"></div>
+        <div class="hob-line-branch"><span></span><span></span></div>
+        <div class="hob-children">
+          <a href="#texta" class="hob-child texta">
+            <div class="name">Texta</div>
+            <div class="desc">Bulk SMS for your customer list — live now</div>
+          </a>
+          <a href="#simple-invoice" class="hob-child invoice">
+            <div class="name">Simple Invoice</div>
+            <div class="desc">Invoicing, without the runaround — coming soon</div>
+          </a>
+        </div>
+        <div class="hob-note">More single-purpose tools join the list as we build them.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEXTA ============ -->
+  <section id="texta">
+    <div class="wrap">
+      <div class="kicker">01 / Texta</div>
+      <h2 class="section-title">Bulk texting, without the bloat</h2>
+      <p class="section-sub">Texta sends text messages to your customer list — appointment reminders, show announcements, sale alerts, whatever your business needs to say.</p>
+
+      <div class="product">
+        <div>
+          <span class="product-badge badge-live">Live now</span>
+          <h3>Reach your whole list in one message.</h3>
+          <p class="desc">No contracts, no required add-ons, and no tiers designed to push you toward the next one up. Texta does one job — sending texts — and does it well.</p>
+          <ul>
+            <li>$25/month per account</li>
+            <li>$0.01 per text segment, billed only when you send</li>
+            <li>$5 in free credit to try it, no card required</li>
+            <li>Cancel anytime, no contracts</li>
+          </ul>
+          <div class="product-actions">
+            <a href="https://app.texta.me/sign-up" class="btn btn-teal">Sign up for Texta <span class="arr">→</span></a>
+            <a href="https://texta.me" class="btn btn-ghost">Learn more at texta.me</a>
+          </div>
+        </div>
+        <div class="product-visual texta">
+          <div style="text-align:center;">
+            <div class="mark">Texta</div>
+            <div class="tag">A penny a text.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SIMPLE INVOICE ============ -->
+  <section id="simple-invoice">
+    <div class="wrap">
+      <div class="kicker">02 / Simple Invoice</div>
+      <h2 class="section-title">Invoicing, without the runaround</h2>
+      <p class="section-sub">Send a clean invoice and get paid by card or bank transfer — without chasing the job through three different apps to do it.</p>
+
+      <div class="product">
+        <div>
+          <span class="product-badge badge-soon">Coming soon</span>
+          <h3>The next tool out of The Prosper Works.</h3>
+          <p class="desc">Simple Invoice is being built with the same philosophy as Texta: one job, done plainly, priced fairly. No markup on card processing, no required upsells.</p>
+          <ul>
+            <li>Line items, payment terms, and client pay links</li>
+            <li>Pay by card or bank transfer (ACH costs less for larger invoices)</li>
+            <li>No processing markup — you pay exactly what Stripe charges</li>
+          </ul>
+          <div class="product-actions">
+            <a href="mailto:hello@theprosperworks.com?subject=Simple%20Invoice%20early%20access&body=I'd%20like%20to%20know%20when%20Simple%20Invoice%20launches." class="btn btn-ghost">Get notified at launch <span class="arr">→</span></a>
+          </div>
+        </div>
+        <div class="product-visual invoice">
+          <div style="text-align:center;">
+            <div class="mark">Invoice</div>
+            <div class="tag">Coming soon</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="services">
+    <div class="wrap">
+      <div class="kicker">Need more than software?</div>
+      <h2 class="section-title">We also build your digital presence.</h2>
+      <p class="section-sub">Beyond Texta and Simple Invoice, The Prosper Works offers hands-on consulting and build work for small businesses that need a website, an online store, or something custom — built the same no-bloat way.</p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="num">WEB DESIGN</div>
+          <h3>A site that actually represents you</h3>
+          <p>Clean, fast websites built simply — not a stretched template with your logo dropped on top.</p>
+        </div>
+        <div class="service-card">
+          <div class="num">E-COMMERCE</div>
+          <h3>Get your store online and selling</h3>
+          <p>Product pages, checkout, and payments set up right the first time, so you're not troubleshooting it later.</p>
+        </div>
+        <div class="service-card">
+          <div class="num">APP DEVELOPMENT</div>
+          <h3>Something built just for you</h3>
+          <p>Need a custom tool, portal, or app for your team or customers? We can scope it and build it.</p>
+        </div>
+      </div>
+
+      <div class="services-cta" id="contact">
+        <p><strong>Not sure where to start?</strong> Tell us what you're running and where it's falling short — we'll tell you honestly whether you need a full build or just a better-set-up version of what you have.</p>
+        <a href="mailto:hello@theprosperworks.com?subject=Project%20inquiry" class="btn btn-ink">Tell us about your project <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-left">
+      <img src="./logo-horizontal-reversed-1600.png" alt="The Prosper Works" style="height:24px; width:auto;">
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="#texta">Texta</a>
+      <a href="#simple-invoice">Simple Invoice</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <span class="footer-copy">© 2026 THE PROSPER WORKS LLC</span>
+  </div>
+</footer>
+
+</body>
+</html>
